@@ -47,7 +47,20 @@ def detail_views(request, product_id):
     return render(request, "details.html", {'product': product})
    
 
-        
+def add_to_cart_view(request, product_id):
+    # Retrieve the product based on the provided product_id
+    product = get_object_or_404(Product, pk=product_id)
+
+    # Create or update the item in the cart
+    if AddToCart.objects.filter(product=product).exists():
+        cart_item = AddToCart.objects.get(product=product)
+        cart_item.quantity += 1
+        cart_item.save()
+    else:
+        cart_item = AddToCart.objects.create(product=product, quantity=1)
+
+    # Redirect the user to the cart page
+    return redirect('add_to_cart')
 
 
 

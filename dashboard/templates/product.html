@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href= 'product.css'>
 <div class="row">
     {% for product in products %}
-    <a href="details/<int:product_id>/" >
+    <a href="{% url 'details' product_id=product.id %}" >
     <div class="col" >
         <div class="card" style="width: 18rem;" >
             <!-- Apply specific styling to the image -->

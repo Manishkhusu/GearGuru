@@ -1,5 +1,5 @@
-<a href="{% url 'product/details/<int:product_id>/' product_id=product.id %}">View Details</a>
-{% comment %} {% extends 'base.html' %}
+
+{% extends 'base.html' %}
 
 {% block content %}
 <h1>{{ product.name }}</h1>
@@ -13,7 +13,16 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'details' product_id=product.id %}">View Details</a>
+    <div>
+        <!-- Button to go back to product list -->
+        <button onclick="window.location.href='{% url 'product' %}'">Back to Product List</button>
+        
+        <!-- Button to add product to cart (replace '#' with appropriate URL) -->
+        <button onclick="window.location.href='{% url 'add_to_cart' product_id=product.id%}'">Add to Cart</button>
+        
+        <!-- Button to proceed to checkout (replace '#' with appropriate URL) -->
+        <button onclick="window.location.href='#'">Buy Now</button>
+    </div>
 
 
-{% endblock content %} {% endcomment %}
+{% endblock content %} 

@@ -13,4 +13,12 @@ class details(models.Model):
     feature = models.CharField(max_length=10000)
 
     def __str__(self):
-        return f"{self.product.name} - {self.feature}"
+        return self.product.name
+    
+class AddToCart (models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} added at {self.added_at}"
