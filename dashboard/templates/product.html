@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href= 'product.css'>
+<div class="row">
+    {% for product in products %}
+    <a href="details/<int:product_id>/" >
+    <div class="col" >
+        <div class="card" style="width: 18rem;" >
+            <!-- Apply specific styling to the image -->
+            <img src="{{ product.image }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">${{ product.price }}</p>
+              
+            </div>
+        </div>
+    </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock content %}
