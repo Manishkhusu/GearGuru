@@ -17,3 +17,8 @@ class AddToCartAdmin(admin.ModelAdmin):
     list_display = ('quantity', 'added_at') 
 
 admin.site.register(AddToCart, AddToCartAdmin)
+
+# class BuynowAdmin(admin.ModelAdmin):
+#     list_display = ('product', 'quantity', 'total_price', 'buyer_name', 'buyer_email', 'shipping_address', 'order_date')
+
+# admin.site.register(Buynow, BuynowAdmin)

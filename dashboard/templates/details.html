@@ -18,10 +18,11 @@
         <button onclick="window.location.href='{% url 'product' %}'">Back to Product List</button>
         
         <!-- Button to add product to cart (replace '#' with appropriate URL) -->
-        <button onclick="window.location.href='{% url 'add_to_cart' product_id=product.id%}'">Add to Cart</button>
-        
+        <a href='/add_to_cart/{{product.id}}'>
+            <button > Add to Cart</button>
+        </a>
         <!-- Button to proceed to checkout (replace '#' with appropriate URL) -->
-        <button onclick="window.location.href='#'">Buy Now</button>
+        <button onclick="window.location.href='//'">Buy Now</button>
     </div>
 
 

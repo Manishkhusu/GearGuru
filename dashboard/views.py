@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from .models import *
+from .forms import *
 
 
 
@@ -49,6 +50,7 @@ def detail_views(request, product_id):
 
 def add_to_cart_view(request, product_id):
     # Retrieve the product based on the provided product_id
+
     product = get_object_or_404(Product, pk=product_id)
 
     # Create or update the item in the cart
@@ -60,7 +62,20 @@ def add_to_cart_view(request, product_id):
         cart_item = AddToCart.objects.create(product=product, quantity=1)
 
     # Redirect the user to the cart page
-    return redirect('add_to_cart')
+    return redirect('add_to_cart/{}'.format(product.id))
+
+# def buy_now(request):
+#     if request.method == 'POST':
+#         form = BuynowForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('success_page')  # Redirect to a success page after successful submission
+#     else:
+#         form = BuynowForm()
+#     return render(request, 'order.html', {'form': form})
+
+# def success_page(request):
+#     return render(request, 'success_page.html')
 
 
 
