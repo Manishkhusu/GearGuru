@@ -15,7 +15,7 @@
         <p>Total items in cart: {{ total_items }}</p>
         <p>Total price: ${{ total_price }}</p>
         <!-- Add buttons for updating cart or proceeding to checkout -->
-        <a href="{% url 'buy_now' %}">Buy now</a>
+        {% comment %} <a href="{% url 'buy_now' %}">Buy now</a> {% endcomment %}
     {% else %}
         <p>Your shopping cart is empty.</p>
     {% endif %}

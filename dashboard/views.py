@@ -20,6 +20,7 @@ def user_login(request):
             return(request, 'login.html', {'error' : 'invalid credentials'})
         
 def user_signup(request):
+    
     if request.method == 'GET':
         return render(request, 'signup.html')
     
@@ -50,19 +51,23 @@ def detail_views(request, product_id):
 
 def add_to_cart_view(request, product_id):
     # Retrieve the product based on the provided product_id
+    cart_items = AddToCart.objects.filter(product = product_id)
 
-    product = get_object_or_404(Product, pk=product_id)
+    context = {
+        'cart_items' : cart_items,
+    }
 
-    # Create or update the item in the cart
-    if AddToCart.objects.filter(product=product).exists():
-        cart_item = AddToCart.objects.get(product=product)
-        cart_item.quantity += 1
-        cart_item.save()
-    else:
-        cart_item = AddToCart.objects.create(product=product, quantity=1)
+    if request.method == 'GET':
+        return render(request, 'cart.html', context)
 
-    # Redirect the user to the cart page
-    return redirect('add_to_cart/{}'.format(product.id))
+    elif request.method == 'POST':
+        # # Create or update the item in the cart
+        cart_items.quantity += 1
+        cart_items.save()
+    
+    return redirect('add_to_cart/{}'.format(product_id))
+
+
 
 # def buy_now(request):
 #     if request.method == 'POST':
