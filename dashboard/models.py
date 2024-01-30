@@ -30,15 +30,27 @@ class AddToCart(models.Model):
         return self.product.name
 
 class PurchasedProduct(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cart = models.ForeignKey(AddToCart, on_delete=models.CASCADE)
-    purchased_product = models.CharField(max_length=255)
-    purchased_quantity = models.IntegerField(default=1)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self) -> str:
-        return self.purchased_product.name
+    add_to_cart = models.ForeignKey(AddToCart, on_delete=models.CASCADE)
     
+    def __str__(self) -> str:
+        return self.add_to_cart.product.name
+
+    @property
+    def user(self):
+        return self.add_to_cart.user
+
+    @property
+    def product(self):
+        return self.add_to_cart.product
+
+    @property
+    def quantity(self):
+        return self.add_to_cart.quantity
+
+    @property
+    def total_price(self):
+        return self.add_to_cart.total_price
+
     
 # class Buynow (models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE)
