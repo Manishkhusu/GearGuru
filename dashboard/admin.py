@@ -11,7 +11,7 @@ admin.site.register(Product, ProductAdmin)
 class DetailAdmin (admin.ModelAdmin):
     list_display = ('product','feature')
 
-admin.site.register(details,DetailAdmin)
+admin.site.register(Detail,DetailAdmin)
 
 class AddToCartAdmin(admin.ModelAdmin):
     list_display = ('quantity', 'added_at') 

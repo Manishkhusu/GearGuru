@@ -45,8 +45,22 @@ def product_page(request):
     return render(request, "product.html", {'products': products})
 
 def detail_views(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, "details.html", {'product': product})
+    product = Product.objects.get(id = product_id)
+    product_detail = Detail.objects.get(product = product)
+    context = {
+        'product' : product,
+        'product_detail' : product_detail
+        
+    }
+    # print(cart_items.quantity)
+    if request.method == 'POST':
+        # # Create or update the item in the cart
+        cart_items = AddToCart.objects.filter(product = product_id).first()  
+        cart_items.quantity += 1
+        cart_items.save()
+        return redirect('add_to_cart/{}'.format(product_id))    
+    else:  
+        return render(request, "details.html", context)
    
 
 def add_to_cart_view(request, product_id):
@@ -57,15 +71,9 @@ def add_to_cart_view(request, product_id):
         'cart_items' : cart_items,
     }
 
-    if request.method == 'GET':
-        return render(request, 'cart.html', context)
-
-    elif request.method == 'POST':
-        # # Create or update the item in the cart
-        cart_items.quantity += 1
-        cart_items.save()
+    return render(request, 'cart.html', context)
     
-    return redirect('add_to_cart/{}'.format(product_id))
+    
 
 
 
