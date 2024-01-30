@@ -170,14 +170,14 @@
                     </a>
                 </button>
                 <button class="btn btn-outline-secondary ml-2">
-                    <a href="cart/" style="text-decoration: none; color: inherit;">
+                    <a href="{% url 'cart'  %}" style="text-decoration: none; color: inherit;">
                         <i class="fas fa-shopping-cart"></i> Cart
                     </a>
                 </button>
                 <!-- Add Order Icon Button -->
                 <button class="btn btn-outline-secondary ml-2">
                     <a href="order/" style="text-decoration: none; color: inherit;">
-                        <i class="fas fa-file-alt"></i> Purchase Product
+                        <i class="fas fa-file-alt"></i> Purchased Products
                     </a>
                 </button>
                 <ul class="navbar-nav">
@@ -190,6 +190,7 @@
     </nav>
     <div class="content">
         {% block content %}
+
         {% endblock %}
     </div>
 

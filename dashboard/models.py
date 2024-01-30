@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -15,13 +16,29 @@ class Detail(models.Model):
     def __str__(self):
         return self.product.name
     
-class AddToCart (models.Model):
+class AddToCart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     added_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.quantity} x {self.product.name} added at {self.added_at}"
+    @property
+    def total_price(self):
+        return self.product.price * self.quantity
+    
+    def __str__(self) -> str:
+        return self.product.name
+
+class PurchasedProduct(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    cart = models.ForeignKey(AddToCart, on_delete=models.CASCADE)
+    purchased_product = models.CharField(max_length=255)
+    purchased_quantity = models.IntegerField(default=1)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self) -> str:
+        return self.purchased_product.name
+    
     
 # class Buynow (models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE)

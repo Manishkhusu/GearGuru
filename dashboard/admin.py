@@ -14,10 +14,12 @@ class DetailAdmin (admin.ModelAdmin):
 admin.site.register(Detail,DetailAdmin)
 
 class AddToCartAdmin(admin.ModelAdmin):
-    list_display = ('quantity', 'added_at') 
+    list_display = ('product', 'quantity', 'added_at') 
 
 admin.site.register(AddToCart, AddToCartAdmin)
 
+
+admin.site.register(PurchasedProduct)
 # class BuynowAdmin(admin.ModelAdmin):
 #     list_display = ('product', 'quantity', 'total_price', 'buyer_name', 'buyer_email', 'shipping_address', 'order_date')
 
