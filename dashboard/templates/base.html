@@ -11,30 +11,32 @@
     <!-- Custom Styles -->
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-image: url("{% static 'D:\4th sem\Applied programming\GearGuru\static\admin\img\background.jpg' %}");
-            background-size: cover;
-            background-position: center;
-            height: 100vh; 
-            margin: 0;
-            padding: 0;
-        }
-        
-        .navbar {
-            padding: 15px;
-            font-size: 25px;
-            background-color: #58ddd0 !important;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    background-color: #E1E2E1;
+    font-family: 'Arial', sans-serif;
+    background-image: url("{% static 'D:\4th sem\Applied programming\GearGuru\static\admin\img\background.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    padding: 12px;
+    font-size: 25px;
+    background-color: #bebcff !important; /* Use !important to override any conflicting styles */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
         
         .navbar-brand img {
-            height: 40px;
+            height: 50px;
             width: auto;
             margin-right: 10px;
+            margin-bottom: 5px;
         }
         
         .navbar-toggler {
-            font-size: 50px;
+            font-size: 90px;
         }
         
         .navbar-nav {
@@ -42,10 +44,11 @@
         }
         
         .navbar-nav a {
-            color: #495057;
-            margin-right: 20px;
-            transition: color 0.3s ease-in-out;
-        }
+    color: #FFFFFF; /* White text color */
+    margin-right: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
         
         .navbar-nav a:hover {
             color: #007bff;
@@ -96,7 +99,7 @@
         h1 {
             font-size: 32px;
             text-align: center;
-            color: #333;
+            color: #020202;
             padding: 20px;
         }
         .container {
@@ -111,7 +114,7 @@
         }
         
         .header h1 {
-            color: #333;
+            color: #000000;
             font-size: 36px;
             margin: 0;
         }
@@ -123,7 +126,7 @@
         .content p {
             font-size: 18px;
             line-height: 1.6;
-            color: #555;
+            color: #000000;
         }
         
         .image-container {
@@ -149,7 +152,7 @@
         <a class="navbar-brand" href="/home/" >
             <!-- Use the static tag to load your logo image -->
            
-            <img src="https://th.bing.com/th/id/OIP.ZOqgcu_fZltNCWG2_n_zRwHaFj?rs=1&pid=ImgDetMain" class="rounded-circle" alt="*">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/7b91ca126017873.612510613e41b.jpg" class="rounded-circle" alt="*">
             <span style="font-size: 30px;">GearGuru</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -195,25 +198,7 @@
     </div>
 
 
-    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-        <hr class="my-4">
     
-        <!-- Social icons -->
-        <div class="pb-4">
-          <a href="https://www.facebook.com/" target="_blank">
-            <i class="fab fa-facebook-f mr-3"></i>
-          </a>
-        </div>
-        <!-- Social icons -->
-    
-        <!--Copyright-->
-        <div class="footer-copyright py-3">
-          © 2024 Copyright:
-        </div>
-        <!--/.Copyright-->
-    
-    </footer>
 </body>
 
 <!-- Font Awesome Icons (Add this link to your head section) -->
