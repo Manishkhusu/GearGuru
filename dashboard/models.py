@@ -31,13 +31,11 @@ class AddToCart(models.Model):
 
 class PurchasedProduct(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cart = models.ForeignKey(AddToCart, on_delete=models.CASCADE)
-    purchased_product = models.CharField(max_length=255)
-    purchased_quantity = models.IntegerField(default=1)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    cart_item = models.ForeignKey(AddToCart, on_delete=models.CASCADE)
+    purchased_at = models.DateTimeField(auto_now_add=True)  # Timestamp for when the product was purchased
 
     def __str__(self) -> str:
-        return self.purchased_product.name
+        return f"{self.user.username}'s Purchased Product: {self.cart_item.product.name}"
     
     
 # class Buynow (models.Model):
