@@ -28,20 +28,29 @@ class AddToCart(models.Model):
     
     def __str__(self) -> str:
         return self.product.name
-    
-    def __str__(self) -> str:
-        return self.product.image
-    
-
 
 class PurchasedProduct(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cart_item = models.ForeignKey(AddToCart, on_delete=models.CASCADE)
-    purchased_at = models.DateTimeField(auto_now_add=True)  # Timestamp for when the product was purchased
-
-    def __str__(self) -> str:
-        return f"{self.user.username}'s Purchased Product: {self.cart_item.product.name}"
+    add_to_cart = models.ForeignKey(AddToCart, on_delete=models.CASCADE)
     
+    def __str__(self) -> str:
+        return self.add_to_cart.product.name
+
+    @property
+    def user(self):
+        return self.add_to_cart.user
+
+    @property
+    def product(self):
+        return self.add_to_cart.product
+
+    @property
+    def quantity(self):
+        return self.add_to_cart.quantity
+
+    @property
+    def total_price(self):
+        return self.add_to_cart.total_price
+
     
 # class Buynow (models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE)

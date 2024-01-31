@@ -25,7 +25,7 @@
                                         <td>{{ cart_item.product.price }}</td>
                                         <td>{{ cart_item.total_price }}</td>
                                         <td>
-                                            <a href="{% url 'confirm_purchase' cart_item.id %}" class="btn btn-success">Purchase</a>
+                                            <a href="{% url 'purchase' cart_item.id %}" class="btn btn-success">Purchase</a>
                                             <a href="" class="btn btn-danger">Remove</a>
                                         </td>
                                     </tr>

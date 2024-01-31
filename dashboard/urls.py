@@ -11,6 +11,7 @@ urlpatterns = [
     path('home/product/', product_page, name='product'),
     path('home/product/details/<int:product_id>/', detail_views, name='details'),
     path('cart/', cart_view, name='cart'),
-    path('confirm-purchase/<int:cart_id>/', confirm_purchase_view, name='confirm_purchase'),
+    path('purchased/<int:cart_id>', PurchasedProductsView.as_view(), name='purchased'),
+    path('errornotfound/', errornotfoundView, name='errornotfound'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

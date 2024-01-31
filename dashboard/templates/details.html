@@ -1,8 +1,7 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="" method="post"`>
+<form action="" method="post">
     {% csrf_token %}
     <h1>{{ product.name }}</h1>
     <img src="{{ product.image }}" alt="{{ product.name }}" style="max-width: 300px;">
@@ -17,14 +16,16 @@
 
     <div>
         <!-- Button to go back to product list -->
-        <button onclick="window.location.href='{% url 'product' %}'">Back to Product List</button>
+        <button onclick="window.location.href='{% url '/product/' %}'">Back to Product List</button>
         
         <!-- Button to add product to cart (replace '#' with appropriate URL) -->
-
-        <button type="submit"> Add to Cart</button>
+        <!-- Replace '#' with the URL where you want to handle the add to cart functionality -->
+        <button type="submit">Add to Cart</button>
+        
         <!-- Button to proceed to checkout (replace '#' with appropriate URL) -->
+        <!-- Replace '#' with the URL where you want to handle the checkout process -->
+        <button onclick="window.location.href='#'">Proceed to Checkout</button>
     </div>
-
 </form>
 
-{% endblock content %} 
+{% endblock %}
