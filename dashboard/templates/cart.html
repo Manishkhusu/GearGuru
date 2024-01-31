@@ -1,60 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-   
-
-   <form action="" method="post">
-    {% csrf_token %}
-    <table style="margin-top: 100px;">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total Price</th>
-                <th>Action</th>
-                <!-- Add more columns as needed -->
-            </tr>
-        </thead>
-        <tbody>
-            {% for cart_item in cart_items %}
-                <tr>
-                    <td>{{cart_item.product.name}}</td>
-                    <td>{{cart_item.quantity}}</td>
-                    <td>{{cart_item.product.price}}</td>
-                    <td>{{cart_item.total_price}}</td>
-                    <td>
-                        <a href="{% url 'confirm_purchase' cart_item.id %}">
-                            <button>Purchase</button>
-                        </a>
-                        <a href="">
-                            <button>Remove</button>
-                        </a>
-                    </td>
-                    <td></td>
-                </tr>
-            {% endfor %}
-            <!-- Add more rows as needed -->
-        </tbody>
-    </table>
-   </form>
-</body>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Unit Price</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cart_item in cart_items %}
+                                    <tr>
+                                        <td>{{ cart_item.product.name }}</td>
+                                        <td>{{ cart_item.quantity }}</td>
+                                        <td>{{ cart_item.product.price }}</td>
+                                        <td>{{ cart_item.total_price }}</td>
+                                        <td>
+                                            <a href="{% url 'confirm_purchase' cart_item.id %}" class="btn btn-success">Purchase</a>
+                                            <a href="" class="btn btn-danger">Remove</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-

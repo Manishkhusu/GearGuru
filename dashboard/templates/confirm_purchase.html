@@ -1,7 +1,30 @@
 {% extends "base.html" %}
 
-{% block  %}
-    <form action="" method="post">
-        Are you sure u want to purchase the product?: <button type="submit">Yes</button>
-    </form>
+{% block content  %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered table-striped mt-5">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total Price</th>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sports Watch</td>
+                        <td>10</td>
+                        <td>5.00</td>
+                        <td>50.00</td>
+                        <!-- Add more rows as needed -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock  %}

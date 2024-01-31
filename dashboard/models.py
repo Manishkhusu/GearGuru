@@ -28,6 +28,11 @@ class AddToCart(models.Model):
     
     def __str__(self) -> str:
         return self.product.name
+    
+    def __str__(self) -> str:
+        return self.product.image
+    
+
 
 class PurchasedProduct(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
