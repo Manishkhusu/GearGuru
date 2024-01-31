@@ -9,14 +9,21 @@
 
     <h2>Features:</h2>
     <ul>
-        {% for detail in product.details_set.all %}
-            <li>{{ detail.feature }}</li>
-        {% endfor %}
+        {% if product.details_set.all %}
+            <!-- Check if details exist -->
+            {% for detail in product.details_set.all %}
+                <li>Detail: {{ detail }}</li>
+                <li>Feature: {{ detail.feature }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No details available for this product.</li>
+        {% endif %}
     </ul>
 
     <div>
         <!-- Button to go back to product list -->
-        <button onclick="window.location.href='{% url '/product/' %}'">Back to Product List</button>
+        <button onclick="window.location.href='{% url 'product' %}'">Back to Product List</button>
+
         
         <!-- Button to add product to cart (replace '#' with appropriate URL) -->
         <!-- Replace '#' with the URL where you want to handle the add to cart functionality -->
@@ -24,7 +31,6 @@
         
         <!-- Button to proceed to checkout (replace '#' with appropriate URL) -->
         <!-- Replace '#' with the URL where you want to handle the checkout process -->
-        <button onclick="window.location.href='#'">Proceed to Checkout</button>
     </div>
 </form>
 
