@@ -40,7 +40,8 @@
                     <td>{{cart_item.product.price}}</td>
                     <td>{{cart_item.total_price}}</td>
                     <td>
-                        <a href="{% url 'purchased' cart_item.id %}">
+
+                        <a href="{% url 'purchased' cart_item.id %} ">
                             <button>Purchase</button>
                         </a>
                         <a href="">

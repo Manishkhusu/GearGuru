@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from .models import *
 from .forms import *
+from django.views.generic import View
 
 
 
@@ -68,21 +69,28 @@ def detail_views(request, product_id):
         return render(request, "details.html", context)
    
 
-def cart_view(request):
+def cart_view(request , cart_id):
     # Retrieve the product based on the provided product_id
+
     user = request.user
+    cart_id = AddToCart.objects.get(id = cart_id)
     cart_items = AddToCart.objects.filter(user = user)
+
 
     context = {
         'cart_items' : cart_items,
     }
-    print(cart_items)
+
+    if request.method == "POST":
+        PurchasedProduct.objects.create(add_to_cart = cart_items )
     return render(request, 'cart.html', context)
+
+    
     
 
 
-class PurchasedProductsView:
-    def post(request, cart_id):
+class PurchasedProductsView(View):
+    def get(request, cart_id):
         # Retrieve the product based on the provided product_id
         cart_items = AddToCart.objects.filter(id = cart_id).first()
         PurchasedProduct.objects.create(add_to_cart = cart_items)

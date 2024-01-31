@@ -2,6 +2,8 @@ from django.urls import path
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('', user_login, name='login'),
     path('home/', home_page, name='home_page'),
@@ -10,8 +12,8 @@ urlpatterns = [
     path ('home/logout/' , logout_view , name = 'logout'),
     path('home/product/', product_page, name='product'),
     path('home/product/details/<int:product_id>/', detail_views, name='details'),
-    path('cart/', cart_view, name='cart'),
-    path('purchased/<int:cart_id>', PurchasedProductsView, name='purchased'),
+    path('cart/<int:card_id>', cart_view, name='cart'),
+    path('purchased/<int:cart_id>', PurchasedProductsView.as_view(), name='purchased'),
     path('errornotfound/', errornotfoundView, name='errornotfound'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
